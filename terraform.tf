@@ -87,23 +87,23 @@ resource "aws_security_group" "allow_tls" {
   }
 }
 
-# resource "aws_lb" "my_lb" {
-#   name               = "my-lb"
-#   internal           = false
-#   load_balancer_type = "application"
-#   security_groups    = [aws_security_group.allow_tls.id]
-#   subnets            = [aws_subnet.main1.id, aws_subnet.main2.id]
-#   tags = {
-#     Name = "my_lb"
-#   }
-# }
+ resource "aws_lb" "my_lb" {
+   name               = "my-lb"
+   internal           = false
+   load_balancer_type = "application"
+   security_groups    = [aws_security_group.allow_tls.id]
+   subnets            = [aws_subnet.main1.id, aws_subnet.main2.id]
+   tags = {
+     Name = "my_lb"
+   }
+ }
 
-# resource "aws_lb_target_group" "my_tg" {
-#   name     = "target-group"
-#   port     = 80
-#   protocol = "HTTP"
-#   vpc_id   = aws_vpc.main.id
-# }
+ resource "aws_lb_target_group" "my_tg" {
+   name     = "target-group"
+   port     = 80
+   protocol = "HTTP"
+   vpc_id   = aws_vpc.main.id
+ }
 
 resource "aws_iam_role" "my_role" {
   name = "my-role"
@@ -120,6 +120,11 @@ resource "aws_iam_role" "my_role" {
     ]
   })
 }
+
+# output "worker_iam_role_name" {
+#   value = aws_iam_role.my_role.name
+# }
+
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
@@ -261,3 +266,18 @@ module "eks" {
 #   sudo systemctl enable apache2
 # EOF
 #}
+
+# Instance Profile
+ data "aws_iam_policy" "ssm_managed_instance" {
+   arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+ }
+ resource "aws_iam_role_policy_attachment" "karpenter_ssm_policy" {
+  role       = aws_iam_role.my_role.name
+  policy_arn = data.aws_iam_policy.ssm_managed_instance.arn
+}
+
+resource "aws_iam_instance_profile" "karpenter" {
+  name = "KarpenterNodeInstanceProfile-my-cluster"
+  role = aws_iam_role.my_role.name
+}
+

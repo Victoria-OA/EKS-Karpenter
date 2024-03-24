@@ -6,7 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: a4af8d3cb440d4e6c8d8638192621f6f-2010162742.us-east-1.elb.amazonaws.com
+    - host: afecbe617ab994bfaad71ca48a177697-889805413.us-east-1.elb.amazonaws.com
       http:
         paths:
           - path: /
@@ -19,7 +19,13 @@ spec:
   ingressClassName: nginx
 
 
+
 # kubectl create secret generic ecr-credentials --from-file=.dockerconfigjson=/home/victoria/.docker/config.json --type=kubernetes.io/dockerconfigjson
 # aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 966117271938.dkr.ecr.us-east-1.amazonaws.com
 # kubectl create secret generic ecr-credentials --from-file=.dockerconfigjson=/path/to/.docker/config.json --type=kubernetes.io/dockerconfigjson
 # aws eks --region <region> update-kubeconfig --name <cluster-name>
+
+# helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+# helm repo update
+# helm install nginx-ingress ingress-nginx/ingress-nginx
+#kubectl get pods
