@@ -4,18 +4,6 @@ provider "helm" {
   }
 }
 
-terraform {
-  required_providers {
-    helm = {
-      source  = "hashicorp/helm"
-      version = ">= 2.1.0"
-      # Adjust timeout value as needed (e.g., 30m)
-      timeouts = {
-        default = "30m"
-      }
-    }
-  }
-}
 resource "helm_release" "karpenter" {
   #depends_on       = [module.eks.kubeconfig]
   namespace        = "karpenter"

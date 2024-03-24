@@ -19,13 +19,3 @@ spec:
   ingressClassName: nginx
 
 
-
-# kubectl create secret generic ecr-credentials --from-file=.dockerconfigjson=/home/victoria/.docker/config.json --type=kubernetes.io/dockerconfigjson
-# aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 966117271938.dkr.ecr.us-east-1.amazonaws.com
-# kubectl create secret generic ecr-credentials --from-file=.dockerconfigjson=/path/to/.docker/config.json --type=kubernetes.io/dockerconfigjson
-# aws eks --region <region> update-kubeconfig --name <cluster-name>
-
-# helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-# helm repo update
-# helm install nginx-ingress ingress-nginx/ingress-nginx
-#kubectl get pods
