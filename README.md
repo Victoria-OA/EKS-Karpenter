@@ -81,5 +81,5 @@ This project demonstrates how to set up an AWS EKS cluster with Karpenter for ef
 10. After Karpenter is installed, apply the necessary Karpenter manifest files to configure Karpenter for autoscaling and resource management.
 
     ```bash
-    kubectl apply -f karpenter-config.yaml
+    kubectl apply -f karpenterfiles.yaml
     ```
