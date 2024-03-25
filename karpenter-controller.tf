@@ -4,31 +4,8 @@ module "iam_assumable_role_karpenter" {
   create_role                   = true
   role_name                     = "karpenter-controller-my-cluster"
   provider_url                  = module.eks.cluster_oidc_issuer_url
-  oidc_fully_qualified_subjects = ["system:serviceaccount:karpenter:karpenter"]
+ # oidc_fully_qualified_subjects = ["system:serviceaccount:karpenter:karpenter"]
 }
-
-# data "aws_iam_policy" "ssm_managed_instance" {
-#   arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-# }
-# # resource "aws_iam_role_policy_attachment" "karpenter_ssm_policy" {
-# #   role       = module.eks.worker_iam_role_name
-# #   policy_arn = data.aws_iam_policy.ssm_managed_instance.arn
-# # }
-
-# # resource "aws_iam_instance_profile" "karpenter" {
-# #   name = "KarpenterNodeInstanceProfile-my-cluster"
-# #   role = module.eks.worker_iam_role_name
-# # }
-# resource "aws_iam_role_policy_attachment" "karpenter_ssm_policy" {
-#   role       = module.eks.worker_iam_role_name
-#   policy_arn = data.aws_iam_policy.ssm_managed_instance.arn
-# }
-
-# resource "aws_iam_instance_profile" "karpenter" {
-#   name = "KarpenterNodeInstanceProfile-my-cluster"
-#   role = module.eks.worker_iam_role_name
-# }
-
 
 resource "aws_iam_role_policy" "karpenter_controller" {
   name = "karpenter-policy-my_cluster"
