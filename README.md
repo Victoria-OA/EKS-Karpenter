@@ -55,7 +55,7 @@ This project demonstrates how to set up an AWS EKS cluster with Karpenter for ef
    kubectl apply -f filename.yaml
    ```
 
-   Since we are using an ingress controller, apply the following commands:
+   Since we are using an ingress controller, apply the following commands to install ingress-nginx:
 
    ```bash
    helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
