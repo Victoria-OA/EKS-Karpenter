@@ -1,4 +1,3 @@
-
 # EKS Cluster with Karpenter Setup
 
 This project demonstrates how to set up an AWS EKS cluster with Karpenter for efficient resource management and autoscaling.
@@ -70,15 +69,17 @@ This project demonstrates how to set up an AWS EKS cluster with Karpenter for ef
    ```
 
    The application can be accessed using the NodePort or LoadBalancer IP provided by the service.
+   ![Screenshot](~/Screenshot from 2024-03-24 20-38-29.png)
 
-9. Install Karpenter using Helm:
+
+10. Install Karpenter using Helm:
 
    ```bash
    helm repo add karpenter https://charts.karpenter.sh
    helm install karpenter karpenter/karpenter
    ```
 
-10. After Karpenter is installed, apply the necessary Karpenter manifest files to configure Karpenter for autoscaling and resource management.
+11. After Karpenter is installed, apply the necessary Karpenter manifest files to configure Karpenter for autoscaling and resource management.
 
     ```bash
     kubectl apply -f karpenterfiles.yaml
