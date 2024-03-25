@@ -14,7 +14,7 @@ This project demonstrates how to set up an AWS EKS cluster with Karpenter for ef
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/eks-karpenter.git
+   git clone https://github.com/Victoria-OA/eks-karpenter.git
    ```
 
 2. Change into the project directory:
