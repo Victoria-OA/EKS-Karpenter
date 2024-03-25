@@ -9,7 +9,7 @@ This project demonstrates how to set up an AWS EKS cluster with Karpenter for ef
 - Terraform installed.
 - Helm installed.
 
-## Installation
+## Steps
 
 1. Clone the repository:
 
