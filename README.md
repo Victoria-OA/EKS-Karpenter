@@ -69,7 +69,8 @@ This project demonstrates how to set up an AWS EKS cluster with Karpenter for ef
    ```
 
    The application can be accessed using the NodePort or LoadBalancer IP provided by the service.
-   ![Screenshot](~/Screenshot from 2024-03-24 20-38-29.png)
+   
+   ![Screenshot](./Screenshot from 2024-03-24 20-38-29.png)
 
 
 10. Install Karpenter using Helm:
